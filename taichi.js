@@ -72,7 +72,6 @@ let range = Y(f => m => n =>
         (empty)
 );
 let maps = k => f => fold(k)(empty)(l => x => ushift(l)(f(x)));
-
 let twenty = mult(four)(five);
 
 let my_list = maps(range(one)(twenty))(n => 
@@ -83,9 +82,8 @@ let my_list = maps(range(one)(twenty))(n =>
     )        
 );
 
-// 其实，上面的代码只用函数已经完成了所有计算，计算结果是单个字符组成的链表
-// 现在用数组整合计算结果，只为方便人眼观察，不然，只能每次输出单个字符
-
+// 上面的代码只用函数已经完成了所有计算，计算结果是单个字符组成的链表
+// 将计算结果存入二维数组并输出，以便人眼观察
 let to_array = proc => {
     let arr = [];
     while(to_boolean(is_empty(proc))!='T'){
@@ -94,6 +92,17 @@ let to_array = proc => {
     }
     return arr;
 }
-
 let to_string = s => to_array(s).map(c => to_char(c)).join('');
-to_array(my_list).map(v=>console.log(to_string(v)));
+console.log(to_array(my_list).map(v=>to_string(v)));
+
+// 不然，只能像下面这样每次输出单个字符
+let fact = Y(f => n => is_zero(n)(one)(
+    x => mult(n)(f(pred(n)))(x)
+));
+let to_c = s => to_char(first(s));
+let s1 = to_digits(fact(four));
+let s2 = rest(s1);
+let s3 = rest(s2);
+let s4 = rest(s3);
+let s5 = rest(s4);
+// console.log(to_c(s1) + to_c(s2) + to_c(s3) + to_c(s4) + to_c(s5));
