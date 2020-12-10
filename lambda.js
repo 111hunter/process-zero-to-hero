@@ -82,8 +82,11 @@ let my_list = maps(range(one)(twenty))(n =>
     )        
 );
 
-// 上面的代码只用函数已经完成了所有计算，计算结果是单个字符组成的链表
-// 因为我们没有编码与输出格式相关的字符，所以用数组储存结果，改变输出格式
+// The above code only uses functions to complete all calculations, 
+// and the calculation result is a single-character linked list
+
+// But the above code does not encode the characters related to the output format, 
+// so use an array to store the result to change the output format
 
 let to_array = proc => {
     let arr = [];
@@ -96,7 +99,7 @@ let to_array = proc => {
 let to_string = s => to_array(s).map(c => to_char(c)).join('');
 console.log(to_array(my_list).map(v=>to_string(v)));
 
-// 也可以用函数模拟数组
+// If you don’t use arrays, you can also use functions to simulate
 
 let fact = Y(f => n => is_zero(n)(one)(
     x => mult(n)(f(pred(n)))(x)
