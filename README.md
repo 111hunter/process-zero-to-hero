@@ -15,7 +15,7 @@ example.lambda is the factorial of 5. As a result of running the example, x is c
 ```
 delay: 914
 redexes: 26898
-(λf.(λx.f (f ... (f x) ... ))
+final: (λf.(λx.f (f ... (f x) ... ))
 ```
 
 Interpreter modified from the project [parkertimmins/lambda_interpreter](https://github.com/parkertimmins/lambda_interpreter), thank you very much
